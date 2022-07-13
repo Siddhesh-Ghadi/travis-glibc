@@ -1,0 +1,15 @@
+dist: bionic
+language: nodejs
+nodejs: 15
+install: skip
+
+script:
+  - strings /lib/powerpc64le-linux-gnu/libc.so.6 | grep GLIBC
+  - npm install git-latest-semver-tag
+  
+jobs:
+  include: 
+    - arch: ppc64le
+    - arch: ppc64le
+      group: edge
+    - arch: amd64
